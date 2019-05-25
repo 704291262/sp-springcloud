@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: config-server
+  rabbitmq:
+    host: 192.168.163.133
+    port: 5672
+    username: admin
+    password: admin
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+          - classpath:/config
+        #git:
+          #uri: https://github.com/704291262/sp-config
+          #searchPaths: config
+          #username: your-username
+          #password: your-password
+    
+server:
+  port: 6001
+    
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
